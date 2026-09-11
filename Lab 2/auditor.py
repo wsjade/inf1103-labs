@@ -22,3 +22,7 @@ while True:
     inventory = inventory + stock
 
     print("Current inventory:", inventory)
+
+    if inventory > 500:
+        print("ALERT: Overstock limit exceeded! Please keep it at 500.")
+        break
