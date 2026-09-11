@@ -1,4 +1,5 @@
 inventory = 0
+failed_entries = 0
 
 while True:
     stock = input("Enter stock quantity or 'quit': ")
@@ -8,12 +9,14 @@ while True:
 
     if not stock.isdigit():
         print("Error: Please enter a valid number.")
+        failed_entries = failed_entries + 1
         continue
 
     stock = int(stock)
 
     if stock < 0:
         print("Error: Stock quantity cannot be negative.")
+        failed_entries = failed_entries + 1
         continue
 
     inventory = inventory + stock
