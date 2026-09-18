@@ -22,26 +22,12 @@ def get_valid_input():
 def process_delivery(current_total, new_value):
     new_total = current_total + new_value
     return new_total
-
-
-def get_valid_input():
-    ...
-
-
-def process_delivery(current_total, new_value):
-    new_total = current_total + new_value
-    return new_total
-
-
+    
 def calculate_tax(amount):
     tax = amount * 0.10
     return tax
 
-    print("Current inventory:", inventory)
 
-    if inventory > 500:
-        print("ALERT: Overstock limit exceeded! Please keep it at 500.")
-
-
-print("Total Units Processed:", inventory)
-print("Number of Failed/Rejected Entries:", failed_entries)
+def generate_report(total_units, failed_attempts):
+    print("Total Units Processed:", total_units)
+    print("Number of Failed/Rejected Entries:", failed_attempts)
