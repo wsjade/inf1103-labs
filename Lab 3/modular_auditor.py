@@ -31,3 +31,22 @@ def calculate_tax(amount):
 def generate_report(total_units, failed_attempts):
     print("Total Units Processed:", total_units)
     print("Number of Failed/Rejected Entries:", failed_attempts)
+
+
+while True:
+    stock = get_valid_input()
+
+    if stock == "quit":
+        break
+
+    if stock is None:
+        failed_entries = failed_entries + 1
+        continue
+
+    inventory = inventory + stock
+
+    print("Current inventory:", inventory)
+
+    if inventory > 500:
+        print("ALERT: Overstock limit exceeded! Please keep it at 500.")
+        break
