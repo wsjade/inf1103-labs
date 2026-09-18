@@ -1,5 +1,6 @@
 inventory = 0
 failed_entries = 0
+deliveries = 0
 
 def get_valid_input():
     stock = input("Enter stock quantity or 'quit': ")
@@ -44,6 +45,7 @@ while True:
         continue
 
     inventory = process_delivery(inventory, stock)
+    deliveries = deliveries + 1
 
     tax = calculate_tax(stock)
 
