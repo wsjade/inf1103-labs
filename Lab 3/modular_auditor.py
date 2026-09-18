@@ -17,13 +17,17 @@ def get_valid_input():
         print("Error: Stock quantity cannot be negative.")
         return None
 
-    inventory = inventory + stock
+    return stock
+
+def process_delivery(current_total, new_value):
+    new_total = current_total + new_value
+    return new_total
 
     print("Current inventory:", inventory)
 
     if inventory > 500:
         print("ALERT: Overstock limit exceeded! Please keep it at 500.")
-        break
+
 
 print("Total Units Processed:", inventory)
 print("Number of Failed/Rejected Entries:", failed_entries)
