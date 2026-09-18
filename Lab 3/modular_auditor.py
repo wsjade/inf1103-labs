@@ -45,6 +45,8 @@ while True:
 
     inventory = process_delivery(inventory, stock)
 
+    tax = calculate_tax(stock)
+
     print("Current inventory:", inventory)
 
     if inventory > 500:
