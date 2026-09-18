@@ -52,3 +52,5 @@ while True:
     if inventory > 500:
         print("ALERT: Overstock limit exceeded! Please keep it at 500.")
         break
+
+generate_report(inventory, failed_entries)
