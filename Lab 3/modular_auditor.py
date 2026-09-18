@@ -43,7 +43,7 @@ while True:
         failed_entries = failed_entries + 1
         continue
 
-    inventory = inventory + stock
+    inventory = process_delivery(inventory, stock)
 
     print("Current inventory:", inventory)
 
