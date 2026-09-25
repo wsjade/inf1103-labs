@@ -1,3 +1,5 @@
+import ast
+
 def get_valid_input():
     stock = input("Enter stock quantity or 'quit': ")
 
@@ -34,9 +36,17 @@ def load_inventory():
     try:
         with open("inventory.txt", "r") as file:
             inventory = int(file.readline().strip())
-            return inventory
+            history_line = file.readline().strip()
+
+            if history_line:
+                transaction_history = ast.literal_eval(history_line)
+            else:
+                transaction_history = []
+
+            return inventory, transaction_history
+
     except FileNotFoundError:
-        return 0
+        return 0, []
 
 def save_inventory(inventory, transaction_history):
     with open("inventory.txt", "w") as file:
@@ -44,10 +54,9 @@ def save_inventory(inventory, transaction_history):
         file.write(str(transaction_history) + "\n")
 
 
-inventory = load_inventory()
+inventory, transaction_history = load_inventory()
 failed_entries = 0
 deliveries = 0
-transaction_history = []
 
 
 while True:
@@ -73,3 +82,5 @@ while True:
 
 generate_report(inventory, deliveries, failed_entries)
 print("Transaction History:", transaction_history)
+print("Loaded inventory:", inventory)
+print("Loaded history:", transaction_history)
