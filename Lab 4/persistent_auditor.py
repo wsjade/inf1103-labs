@@ -41,6 +41,7 @@ def load_inventory():
 inventory = load_inventory()
 failed_entries = 0
 deliveries = 0
+transaction_history = []
 
 while True:
     stock = get_valid_input()
@@ -54,13 +55,13 @@ while True:
 
     inventory = process_delivery(inventory, stock)
     deliveries = deliveries + 1
+    transaction_history.append(stock)
 
     tax = calculate_tax(stock)
-
-    print("Current inventory:", inventory)
 
     if inventory > 500:
         print("ALERT: Overstock limit exceeded! Please keep it at 500.")
         break
 
 generate_report(inventory, deliveries, failed_entries)
+print("Transaction History:", transaction_history)
