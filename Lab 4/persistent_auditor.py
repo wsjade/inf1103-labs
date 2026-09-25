@@ -38,15 +38,23 @@ def load_inventory():
     except FileNotFoundError:
         return 0
 
+def save_inventory(inventory, transaction_history):
+    with open("inventory.txt", "w") as file:
+        file.write(str(inventory) + "\n")
+        file.write(str(transaction_history) + "\n")
+
+
 inventory = load_inventory()
 failed_entries = 0
 deliveries = 0
 transaction_history = []
 
+
 while True:
     stock = get_valid_input()
 
     if stock == "quit":
+        save_inventory(inventory, transaction_history)
         break
 
     if stock is None:
