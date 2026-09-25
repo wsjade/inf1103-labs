@@ -78,9 +78,7 @@ while True:
 
     if inventory > 500:
         print("ALERT: Overstock limit exceeded! Please keep it at 500.")
+        save_inventory(inventory, transaction_history)
         break
 
 generate_report(inventory, deliveries, failed_entries)
-print("Transaction History:", transaction_history)
-print("Loaded inventory:", inventory)
-print("Loaded history:", transaction_history)
