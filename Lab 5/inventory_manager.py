@@ -38,6 +38,13 @@ def load_inventory():
         print("inventory.json not found. Starting with empty inventory.")
 
 
+def save_inventory():
+    with open("inventory.json", "w") as file:
+        json.dump(inventory, file, indent=4)
+
+    print("Inventory saved successfully to inventory.json.")
+
+
 def display_all():
     print("\nCurrent Inventory")
     print("-" * 48)
@@ -95,3 +102,4 @@ def update_stock():
 
 load_inventory()
 display_all()
+save_inventory()
