@@ -1,3 +1,6 @@
+import json
+import os
+
 inventory = [
     {
         "id": "P001",
@@ -18,6 +21,21 @@ inventory = [
         "stock": 25
     }
 ]
+
+
+def load_inventory():
+    global inventory
+
+    if os.path.exists("inventory.json"):
+        print("inventory.json found.")
+
+        with open("inventory.json", "r") as file:
+            inventory = json.load(file)
+
+        print("Inventory loaded successfully.")
+    else:
+        inventory = []
+        print("inventory.json not found. Starting with empty inventory.")
 
 
 def display_all():
@@ -75,5 +93,5 @@ def update_stock():
 
     print("Product not found.")
 
-add_product()
+load_inventory()
 display_all()
