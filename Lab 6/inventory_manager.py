@@ -48,5 +48,31 @@ def save_inventory():
     print("Inventory saved successfully to inventory.json.")
 
 
-load_inventory()
-save_inventory()
+def add_product():
+    print("\nAdd New Product")
+
+    product_id = input("Product ID: ")
+
+    if inventory.search_product(product_id) is not None:
+        print("Product ID already exists.")
+        return
+
+    product_name = input("Product Name: ")
+
+    try:
+        price = float(input("Price: "))
+        stock = int(input("Stock Quantity: "))
+
+        if price < 0 or stock < 0:
+            print("Price and stock cannot be negative.")
+            return
+
+    except ValueError:
+        print("Please enter a valid price and stock quantity.")
+        return
+
+    product = Product(product_id, product_name, price, stock)
+    inventory.add_product(product)
+
+    print("Product added successfully!")
+
