@@ -106,3 +106,22 @@ def update_stock():
     product.update_stock(new_stock)
 
     print("Stock updated successfully!")
+
+
+def search_product():
+    print("\nSearch Product")
+
+    product_id = input("Enter Product ID: ")
+
+    product = inventory.search_product(product_id)
+
+    if product is None:
+        print("Product not found.")
+    else:
+        print("Product Found")
+        print("-" * 48)
+        product.display_information()
+        print("-" * 48)
+
+load_inventory()
+search_product()
