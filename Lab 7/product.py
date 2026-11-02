@@ -58,6 +58,13 @@ class PhysicalProduct(Product, CanBeShipped):
         print(f"Weight: {self.__weight} kg")
 
 
+    def to_dict(self):
+        data = super().to_dict()
+        data["type"] = "physical"
+        data["weight"] = self.__weight
+        return data
+
+
     def get_fulfilment_info(self):
         return "This product requires physical shipping."
 
@@ -74,6 +81,13 @@ class DigitalProduct(Product):
     def display_information(self):
         super().display_information()
         print(f"Download Size: {self.__download_size} MB")
+
+
+    def to_dict(self):
+        data = super().to_dict()
+        data["type"] = "digital"
+        data["download_size"] = self.__download_size
+        return data
 
 
     def get_fulfilment_info(self):
