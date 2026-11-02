@@ -1,0 +1,18 @@
+[
+    {
+        "id": "101",
+        "name": "Guitar",
+        "price": 250.0,
+        "stock": 10,
+        "type": "physical",
+        "weight": 5.5
+    },
+    {
+        "id": "102",
+        "name": "Python Ebook",
+        "price": 15.0,
+        "stock": 20,
+        "type": "digital",
+        "download_size": 25.0
+    }
+]
