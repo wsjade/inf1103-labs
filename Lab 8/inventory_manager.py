@@ -6,12 +6,12 @@ from digital_product import DigitalProduct
 from supplier import Supplier
 from inventory import Inventory
 
-inventory = Inventory()
+inventory: Inventory = Inventory()
 
 
-def load_inventory():
+def load_inventory() -> None:
     global inventory
-    inventory = Inventory()
+    inventory: Inventory = Inventory()
 
     if os.path.exists("inventory.json"):
         print("inventory.json found.")
@@ -69,7 +69,7 @@ def load_inventory():
         print("inventory.json not found. Starting with empty inventory.")
 
 
-def save_inventory():
+def save_inventory() -> None:
     data = [
         product.to_dict()
         for product in inventory.get_products()
@@ -81,7 +81,7 @@ def save_inventory():
     print("Inventory saved successfully to inventory.json.")
 
 
-def add_product():
+def add_product() -> None:
     print("\nAdd New Product")
     print("1. Physical Product")
     print("2. Digital Product")
@@ -159,7 +159,7 @@ def add_product():
     print("Product added successfully!")
 
 
-def update_stock():
+def update_stock() -> None:
     print("\nUpdate Stock")
 
     product_id = input("Enter Product ID: ")
@@ -190,7 +190,7 @@ def update_stock():
     print("Stock updated successfully!")
 
 
-def search_product():
+def search_product() -> None:
     print("\nSearch Product")
 
     product_id = input("Enter Product ID: ")
@@ -207,7 +207,7 @@ def search_product():
         print("-" * 48)
 
 
-def main():
+def main() -> None:
     load_inventory()
 
     while True:

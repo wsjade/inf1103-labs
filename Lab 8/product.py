@@ -11,16 +11,16 @@ class Product(ABC):
             stock: int,
             supplier: Supplier
         ):
-        self.__product_id = product_id
-        self.__name = name
-        self.__price = price
-        self.__stock = stock
+        self.__product_id: str = product_id
+        self.__name: str = name
+        self.__price: float = price
+        self.__stock: int = stock
         self.__supplier: Supplier = supplier
 
-    def update_stock(self, quantity):
+    def update_stock(self, quantity) -> None:
         self.__stock = quantity
 
-    def display_information(self):
+    def display_information(self) -> None:
         print(
             f"ID: {self.__product_id} | "
             f"Name: {self.__name} | "
