@@ -5,11 +5,11 @@ from order import Order
 
 
 # Create a supplier
-supplier = Supplier("S001", "ABC Electronics", "abc@example.com")
+supplier = Supplier("S001", "Sunshine Electronics", "sunshine@gmail.com")
 
 # Create products
-mouse = PhysicalProduct("P001", "Wireless Mouse", 25.90, 50, 0.2, supplier)
-software = DigitalProduct("P002", "Keyboard Software", 49.90, 20, 500, supplier)
+mouse = PhysicalProduct("P001", "Wireless Mouse", 25.9, 50, 0.2, supplier)
+software = DigitalProduct("P002", "Keyboard Software", 49.9, 20, 500, supplier)
 
 # Create an order
 order = Order("ORD001")
