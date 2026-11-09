@@ -48,7 +48,12 @@ class Product(ABC):
             "id": self.__product_id,
             "name": self.__name,
             "price": self.__price,
-            "stock": self.__stock
+            "stock": self.__stock,
+            "supplier": {
+                "supplier_id": self.__supplier.get_supplier_id(),
+                "name": self.__supplier.get_name(),
+                "contact_email": self.__supplier.get_contact_email()
+            }
         }
 
 
