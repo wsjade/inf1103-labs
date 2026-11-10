@@ -11,7 +11,7 @@ inventory: Inventory = Inventory()
 
 def load_inventory() -> None:
     global inventory
-    inventory: Inventory = Inventory()
+    inventory = Inventory()
 
     if os.path.exists("inventory.json"):
         print("inventory.json found.")
