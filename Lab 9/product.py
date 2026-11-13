@@ -24,7 +24,7 @@ class Product(ABC):
         self.__stock: int = stock
         self.__supplier: Supplier = supplier
 
-    def update_stock(self, quantity) -> None:
+    def update_stock(self, quantity: int) -> None:
         if quantity < 0:
             raise ValueError("Stock quantity cannot be negative.")
 
