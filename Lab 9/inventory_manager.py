@@ -1,5 +1,6 @@
 import json
 import os
+import csv
 from supplier import Supplier
 from inventory import Inventory
 from product_factory import ProductFactory
@@ -249,6 +250,49 @@ def main() -> None:
 
         else:
             print("Invalid option. Please try again.")
+
+
+def load_products(path: str, inventory: Inventory, supplier: Supplier) -> None:
+    loaded = 0
+
+    try:
+        file = open(path, newline="")
+
+    except FileNotFoundError:
+        print(f"Products file not found: {path}")
+
+    else:
+        with file:
+            reader = csv.reader(file)
+
+            # Skip the header row
+            next(reader, None)
+
+            for row in reader:
+                try:
+                    product_type, product_id, name, price, stock_quantity = row
+
+                    product = ProductFactory.create(
+                        product_type=product_type,
+                        product_id=product_id,
+                        name=name,
+                        price=float(price),
+                        stock_quantity=int(stock_quantity),
+                        supplier=supplier,
+                        weight=0.0,
+                        download_size=0.0
+                    )
+
+                    inventory.add_product(product)
+                    loaded += 1
+
+                except ValueError as error:
+                    print(f"Skipping invalid row {row}: {error}")
+
+        print(f"{loaded} products loaded.")
+
+    finally:
+        print("Load attempt finished.")
 
 
 if __name__ == "__main__":
