@@ -15,7 +15,6 @@ def get_positive_float(prompt: str) -> float:
 
             if value <= 0:
                 raise ValueError("Number must be greater than zero.")
-                continue
             return value
 
         except ValueError:
@@ -30,7 +29,7 @@ def load_inventory() -> None:
         print("inventory.json found.")
 
         try:
-            with open("inventory.json", "r") as file:
+            with open("inventory.json", "r", encoding="utf-8") as file:
                 data = json.load(file)
 
             for item in data:
@@ -75,7 +74,7 @@ def save_inventory() -> None:
         for product in inventory.get_products()
     ]
 
-    with open("inventory.json", "w") as file:
+    with open("inventory.json", "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)
 
     print("Inventory saved successfully to inventory.json.")
@@ -114,8 +113,8 @@ def add_product() -> None:
         price = get_positive_float("Price: ")
         stock = int(input("Stock Quantity: "))
 
-        if price < 0 or stock < 0:
-            print("Price and stock cannot be negative.")
+        if stock < 0:
+            print("Stock cannot be negative.")
             return
 
         weight = None
@@ -124,8 +123,8 @@ def add_product() -> None:
         if product_type == "1":
             weight = float(input("Weight (kg): "))
 
-            if weight < 0:
-                print("Weight cannot be negative.")
+            if weight <= 0:
+                print("Weight cannot be negative. It must be greater than zero.")
                 return
 
             selected_type = "physical"
@@ -133,22 +132,22 @@ def add_product() -> None:
         else:
             download_size = float(input("Download Size (MB): "))
 
-            if download_size < 0:
-                print("Download size cannot be negative.")
+            if download_size <= 0:
+                print("Download size cannot be negative. It must be greater than zero.")
                 return
 
             selected_type = "digital"
 
         product = ProductFactory.create(
-        product_type=selected_type,
-        product_id=product_id,
-        name=product_name,
-        price=price,
-        stock_quantity=stock,
-        supplier=supplier,
-        weight=weight,
-        download_size=download_size
-    )
+            product_type=selected_type,
+            product_id=product_id,
+            name=product_name,
+            price=price,
+            stock_quantity=stock,
+            supplier=supplier,
+            weight=weight,
+            download_size=download_size
+        )
 
     except ValueError:
         print("Please enter valid numeric values.")
@@ -256,7 +255,7 @@ def load_products(path: str, inventory: Inventory, supplier: Supplier) -> None:
     loaded = 0
 
     try:
-        file = open(path, newline="")
+        file = open(path, newline="", encoding="utf-8")
 
     except FileNotFoundError:
         print(f"Products file not found: {path}")
