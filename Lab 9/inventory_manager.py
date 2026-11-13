@@ -7,6 +7,20 @@ from product_factory import ProductFactory
 inventory: Inventory = Inventory()
 
 
+def get_positive_float(prompt: str) -> float:
+    while True:
+        try:
+            value = float(input(prompt))
+
+            if value <= 0:
+                raise ValueError("Number must be greater than zero.")
+                continue
+            return value
+
+        except ValueError:
+            print("Please enter a valid positive number, e.g. 12.50.")
+
+
 def load_inventory() -> None:
     global inventory
     inventory = Inventory()
@@ -96,7 +110,7 @@ def add_product() -> None:
     )
 
     try:
-        price = float(input("Price: "))
+        price = get_positive_float("Price: ")
         stock = int(input("Stock Quantity: "))
 
         if price < 0 or stock < 0:
